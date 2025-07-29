@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Snippet - H24Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>H24Code</span>
+                    <div class="logo-pulse"></div>
+                </div>
+                <div class="tagline">
+                    <i class="fas fa-plus-circle"></i>
+                    Créer un nouveau snippet
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="index.php" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Retour</span>
+                </a>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <div class="toggle-indicator"></div>
+                </button>
+            </div>
+        </header>
+
+        <div class="form-container">
+            <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <h1>
+                    <i class="fas fa-plus"></i>
+                    Créer un Snippet
+                </h1>
+                <p>Ajoutez un nouveau snippet à votre collection personnelle</p>
+            </div>
+
+            <form id="snippet-form" class="modern-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="title">
+                            <i class="fas fa-heading"></i>
+                            Titre du snippet
+                            <span class="required">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="title" placeholder="Ex: Fonction de validation email" required>
+                            <div class="input-focus-border"></div>
+                        </div>
+                        <div class="error" id="title-error"></div>
+                        <div class="field-help">Donnez un titre descriptif et explicite</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="description">
+                            <i class="fas fa-align-left"></i>
+                            Description
+                            <span class="required">*</span>
+                        </label>
+                        <div class="textarea-wrapper">
+                            <textarea id="description" placeholder="Décrivez l'objectif et le fonctionnement de ce snippet..." required></textarea>
+                            <div class="textarea-focus-border"></div>
+                            <div class="char-counter">
+                                <span id="desc-count">0</span>/500 caractères
+                            </div>
+                        </div>
+                        <div class="error" id="description-error"></div>
+                        <div class="field-help">Expliquez l'utilité et le contexte d'utilisation</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half-width">
+                        <label for="category">
+                            <i class="fas fa-tag"></i>
+                            Catégorie
+                            <span class="required">*</span>
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="category" required>
+                                <option value="">Choisissez une catégorie...</option>
+                                <option value="PHP">🐘 PHP</option>
+                                <option value="HTML">🌐 HTML</option>
+                                <option value="CSS">🎨 CSS</option>
+                                <option value="JavaScript">⚡ JavaScript</option>
+                                <option value="Python">🐍 Python</option>
+                                <option value="SQL">🗄️ SQL</option>
+                                <option value="React">⚛️ React</option>
+                                <option value="Vue">💚 Vue.js</option>
+                                <option value="Node.js">🟢 Node.js</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                        <div class="error" id="category-error"></div>
+                    </div>
+
+                    <div class="form-group half-width">
+                        <label for="tags">
+                            <i class="fas fa-tags"></i>
+                            Tags (optionnel)
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="tags" placeholder="validation, email, regex">
+                            <div class="input-focus-border"></div>
+                        </div>
+                        <div class="field-help">Séparez les tags par des virgules</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="code">
+                            <i class="fas fa-code"></i>
+                            Code source
+                            <span class="required">*</span>
+                        </label>
+                        <div class="code-editor-wrapper">
+                            <div class="code-editor-header">
+                                <div class="editor-tabs">
+                                    <div class="tab active">
+                                        <i class="fas fa-file-code"></i>
+                                        snippet.code
+                                    </div>
+                                </div>
+                                <div class="editor-actions">
+                                    <button type="button" class="editor-btn" id="format-code">
+                                        <i class="fas fa-magic"></i>
+                                        Formater
+                                    </button>
+                                    <button type="button" class="editor-btn" id="clear-code">
+                                        <i class="fas fa-trash"></i>
+                                        Effacer
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="code-editor">
+                                <div class="line-numbers" id="line-numbers">1</div>
+                                <textarea id="code" placeholder="Collez votre code ici..." required></textarea>
+                            </div>
+                            <div class="code-stats">
+                                <span id="lines-count">1 ligne</span>
+                                <span id="chars-count">0 caractères</span>
+                            </div>
+                        </div>
+                        <div class="error" id="code-error"></div>
+                        <div class="field-help">Collez ou tapez votre code source</div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn submit-btn">
+                        <i class="fas fa-save"></i>
+                        <span>Enregistrer le Snippet</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button type="button" class="btn cancel-btn" onclick="window.location.href='index.php'">
+                        <i class="fas fa-times"></i>
+                        <span>Annuler</span>
+                    </button>
+                    <button type="button" class="btn preview-btn" id="preview-btn">
+                        <i class="fas fa-eye"></i>
+                        <span>Aperçu</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Preview Modal -->
+        <div class="modal-overlay" id="preview-modal" style="display: none;">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3>
+                        <i class="fas fa-eye"></i>
+                        Aperçu du Snippet
+                    </h3>
+                    <button class="modal-close" id="close-preview">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="snippet-preview" id="snippet-preview">
+                        <!-- Preview content will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+        <p>Enregistrement en cours...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
