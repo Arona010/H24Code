@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const search = searchInput ? searchInput.value : '';
         const category = categorySelect ? categorySelect.value : '';
         
-        fetch(`../Backend/get.php?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&limit=${limit}&offset=${(currentPage - 1) * limit}`)
+        fetch(`Backend/get.php?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&limit=${limit}&offset=${(currentPage - 1) * limit}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erreur réseau');
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Réinitialiser les erreurs
             document.querySelectorAll('.error').forEach(el => el.textContent = '');
             
-            fetch('../Backend/add.php', {
+            fetch('Backend/add.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const snippetId = deleteBtn.dataset.id;
             
             if (confirm('Êtes-vous sûr de vouloir supprimer ce snippet ?')) {
-                fetch(`../Backend/delete.php?id=${snippetId}`, {
+                fetch(`Backend/delete.php?id=${snippetId}`, {
                     method: 'DELETE'
                 })
                 .then(response => {
